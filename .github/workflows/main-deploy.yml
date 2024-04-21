@@ -30,7 +30,10 @@ jobs:
             ${{ runner.os }}-gradle-
       - name: Make application.yml
         run: |
-          cd ./src/main/resources
+          cd ./src/main
+          mkdir resources
+          cd ./resources
+          touch ./application.yml
           echo "${{ secrets.APPLICATION }}" > ./application.yml
         shell: bash
         
@@ -44,6 +47,9 @@ jobs:
       - name: Make zip file
         run: |
           mkdir deploy
+          cp ./appspec.yml ./deploy/
+          cp ./Dockerfile ./deploy/
+          cp ./*.sh ./deploy/
           cp ./build/libs/*.jar ./deploy/
           zip -r -qq -j ./websocket-build.zip ./deploy
           
