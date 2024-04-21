@@ -33,10 +33,11 @@ public class RedisConfig {
     }
 
     @Bean
-    public RedisTemplate<String, Integer> redisTemplate(){
+    public RedisTemplate<String, Integer> redisTemplate() {
         RedisTemplate<String, Integer> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(redisConnectionFactory());
         redisTemplate.setKeySerializer(new StringRedisSerializer());
         redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer<>(Integer.class));
         return redisTemplate;
     }
+}
