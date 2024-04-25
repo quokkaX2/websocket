@@ -12,19 +12,19 @@ import org.springframework.stereotype.Component;
 public class EventScheduler {
     private final QueueService queueService;
 
-    @Scheduled(fixedDelay = 1000)
+    @Scheduled(fixedDelay = 5000)
     public void periodicQueue() {
         log.info("대기열 가져오기");
         queueService.getQueue();
     }
 
-    @Scheduled(fixedDelay = 1000)
+    @Scheduled(fixedDelay = 5000)
     public void periodicSuccess() {
         log.info("성공 가져오기");
         queueService.getSucessResult();
     }
 
-    @Scheduled(fixedDelay = 1000)
+    @Scheduled(fixedDelay = 5000)
     public void periodicFail() {
         log.info("실패 가져오기");
         queueService.getFailResult();
